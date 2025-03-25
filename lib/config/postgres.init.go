@@ -3,6 +3,7 @@ package config
 import (
 	"fmt"
 	"github.com/jmoiron/sqlx"
+	_ "github.com/lib/pq"
 	"log"
 	"time"
 )
@@ -11,7 +12,7 @@ func PostgresInit(cfg *App) (*sqlx.DB, error) {
 	// Format DSN (Data Source Name)
 	log.Println("Connecting to PostgreSQL...")
 
-	dsn := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=%s",
+	dsn := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=%s",
 		cfg.Postgres.Host, cfg.Postgres.Port, cfg.Postgres.Username, cfg.Postgres.Password, cfg.Postgres.DBName, cfg.Postgres.SSLMode)
 
 	// Koneksi ke database

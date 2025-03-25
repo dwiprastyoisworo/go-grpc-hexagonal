@@ -8,7 +8,7 @@ import (
 
 func (p *ProductRepository) GetAll(ctx context.Context) ([]model.ProductDto, error) {
 	var products []model.ProductDto
-	err := p.db.GetContext(ctx, &products, "SELECT id, name, price, image_url, quantity FROM products")
+	err := p.db.SelectContext(ctx, &products, "SELECT id, name, price, image_url, quantity FROM products")
 	return products, err
 }
 

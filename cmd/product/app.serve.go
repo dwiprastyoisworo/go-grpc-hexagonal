@@ -35,7 +35,7 @@ func main() {
 
 	// create new http server
 	srv := &http.Server{
-		Addr:    fmt.Sprintf(":%d", cfg.Port),
+		Addr:    fmt.Sprintf(":%s", cfg.Port),
 		Handler: app.Handler(),
 	}
 

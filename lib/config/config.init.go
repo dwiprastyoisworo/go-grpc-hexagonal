@@ -27,7 +27,8 @@ type Postgres struct {
 }
 
 func ConfigInit() (*App, error) {
-	viper.SetConfigName("env")
+	viper.SetConfigType("env")
+	viper.SetConfigFile(".env")
 	viper.AutomaticEnv() // Mengambil nilai dari ENV jika tersedia
 
 	// Membaca file .env
@@ -44,7 +45,7 @@ func ConfigInit() (*App, error) {
 		Postgres: Postgres{
 			Host:        viper.GetString("POSTGRES_HOST"),
 			Port:        viper.GetString("POSTGRES_PORT"),
-			Username:    viper.GetString("POSTGRES_USERNAME"),
+			Username:    viper.GetString("POSTGRES_USER"),
 			Password:    viper.GetString("POSTGRES_PASSWORD"),
 			DBName:      viper.GetString("POSTGRES_DBNAME"),
 			SSLMode:     viper.GetString("POSTGRES_SSL_MODE"),
